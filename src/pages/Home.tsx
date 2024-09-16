@@ -16,6 +16,14 @@ export function Home<FC>(props: IProps) {
         setFetching(true)
     })
 
+    function downloadPDF(path: string, filename: string) {
+        const doc = document.createElement("a")
+        doc.href = path;
+        doc.target = "__blank";
+        doc.download = filename;
+        doc.click();
+    }
+
     return (
         <div>
             <Header path={["Home"]} >
@@ -48,8 +56,14 @@ export function Home<FC>(props: IProps) {
                             hr.click()
                         }}
                     >Sign in with UAE Pass</Button>
-                    <Button icon={<DownloadOutlined />} >Min requirements for consultants</Button>
-                    <Button icon={<DownloadOutlined />} >Max requirements for contractors</Button>
+                    <Button
+                        icon={<DownloadOutlined />}
+                        onClick={() => downloadPDF("/documents/requireents_consultant.pdf", "consultant")}
+                    >Min requirements for consultants</Button>
+                    <Button
+                        icon={<DownloadOutlined />}
+                        onClick={() => downloadPDF("/documents/requireents_contractor.pdf", "contractor")}
+                    >Max requirements for contractors</Button>
                 </div>
             </Header>
         </div>
