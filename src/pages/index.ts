@@ -1,8 +1,7 @@
 import { Home } from "./Home"
-import SignIn from "./Signin"
 import RedirectLoading from "./RedirectLoading"
+import SignIn from "./Signin"
+import VendorRegistration from "./VendorRegistration"
 export {
-    Home,
-    SignIn,
-    RedirectLoading
+    Home, RedirectLoading, SignIn, VendorRegistration
 }
