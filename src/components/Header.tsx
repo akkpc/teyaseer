@@ -1,7 +1,7 @@
 import { Layout, theme, Typography } from 'antd';
 import { ReactNode } from 'react';
 import "../App.css";
-import { headerQueryColor, PrimaryColor } from '../colors';
+import { headerQueryColor, primaryColor } from '../colors';
 
 const { Header, Content, Footer } = Layout;
 interface Props {
@@ -16,7 +16,7 @@ function App({ children, path }: Props) {
 
     return (
         <Layout>
-            <Header style={{ display: 'flex', alignItems: 'center', height: 92, backgroundColor: PrimaryColor, justifyContent: "space-between" }}>
+            <Header style={{ display: 'flex', alignItems: 'center', height: 92, backgroundColor: primaryColor, justifyContent: "space-between" }}>
                 <div style={{ display: 'flex', alignItems: 'center' }} >
                     <img src={"/images/teyaseer.png"} />
                 </div>
