@@ -1,6 +1,7 @@
-import { Breadcrumb, Image, Layout, theme } from 'antd';
+import { Layout, theme, Typography } from 'antd';
 import { ReactNode } from 'react';
-import { PrimaryColor } from '../colors';
+import "../App.css";
+import { headerQueryColor, PrimaryColor } from '../colors';
 
 const { Header, Content, Footer } = Layout;
 interface Props {
@@ -15,33 +16,44 @@ function App({ children, path }: Props) {
 
     return (
         <Layout>
-            <Header style={{ display: 'flex', alignItems: 'center', height: 160, backgroundColor:PrimaryColor}}>
-                <Image
-                    height={32}
-                    src={"/images/Teyaseer_Logo_white.webp"}
-                    preview={false}
-                />
+            <Header style={{ display: 'flex', alignItems: 'center', height: 92, backgroundColor: PrimaryColor, justifyContent: "space-between" }}>
+                <div style={{ display: 'flex', alignItems: 'center' }} >
+                    <img src={"/images/teyaseer.png"} />
+                </div>
+                <div>
+                    <div style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        height: 32,
+                        width: 437,
+                        backgroundColor: headerQueryColor,
+                        borderRadius: 8,
+                        // paddingLeft: 8,
+                        // paddingRight: 8,
+                        // paddingBottom: 32,
+                        // paddingTop: 32
+                    }} >
+                        <Typography style={{ fontSize: 11, color: "white", fontWeight: 600 }} >Having trouble with this process? Email us at: registration@teyaseer.ae</Typography>
+                    </div>
+                </div>
+                <div>
+
+                </div>
             </Header>
-            <Content style={{ padding: '0 48px' }}>
-                <Breadcrumb style={{ margin: '16px 0' }}>
-                    {
-                        path.map((pathName) => <Breadcrumb.Item>{pathName}</Breadcrumb.Item>)
-                    }
-                </Breadcrumb>
+            <Content>
                 <div
                     style={{
                         background: colorBgContainer,
-                        padding: 24,
-                        minHeight: "71vh",
                         borderRadius: borderRadiusLG,
                     }}
                 >
                     {children}
                 </div>
             </Content>
-            <Footer style={{ textAlign: 'center' }}>
+            {/* <Footer style={{ textAlign: 'center' }}>
                 Teyeseer ©{new Date().getFullYear()} All right reserved
-            </Footer>
+            </Footer> */}
         </Layout>
     );
 };
