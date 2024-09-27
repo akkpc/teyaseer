@@ -7,7 +7,7 @@ interface Props {
     name: string;
     rootStyle?: React.CSSProperties;
 }
-export default function TextInput({ label, placeholder, data, setData, required, name, type = "text", rootStyle, style, ...rest }: Props & InputProps) {
+export default function KFTextInput({ label, placeholder, data, setData, required, name, type = "text", rootStyle, style, ...rest }: Props & InputProps) {
     return (
         <div style={{ display: "flex", justifyContent: "flex-start", flexDirection: "column", rowGap: 5, ...rootStyle }} >
             <label style={{ textAlign: "left" }} title='required' >

@@ -2,7 +2,7 @@ import { Button, Card, Col, Row } from 'antd'
 import Typography from "antd/es/typography/Typography"
 import { useEffect, useState } from 'react'
 import { borderColor, lightColor, primaryColor } from "../colors"
-import { Header } from '../components/Header'
+import { KFHeader } from '../components/KFHeader'
 
 interface IProps { }
 /**
@@ -27,7 +27,7 @@ export function Home<FC>(props: IProps) {
 
     return (
         <div>
-            <Header path={["Home"]} >
+            <KFHeader path={["Home"]} >
                 <Row
                     style={{
                         display: "flex",
@@ -158,7 +158,7 @@ export function Home<FC>(props: IProps) {
                         </div>
                     </Col>
                 </Row>
-            </Header>
+            </KFHeader>
         </div>
     )
 }

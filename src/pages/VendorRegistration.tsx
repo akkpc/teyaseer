@@ -3,7 +3,7 @@ import React, { useReducer, useState } from 'react';
 import Classification from '../components/Classification';
 import CompanyInformation from '../components/CompanyInformation';
 import ContactInformation from '../components/ContactInformation';
-import { Header } from '../components/Header';
+import { KFHeader } from '../components/KFHeader';
 
 
 interface FormFields {
@@ -65,7 +65,7 @@ export default function VendorRegistration() {
 
     return (
         <div>
-            <Header path={["Home", "Vendor Registration"]} >
+            <KFHeader path={["Home", "Vendor Registration"]} >
                 <Tabs
                     defaultActiveKey="1"
                     key={currentTab}
@@ -74,7 +74,7 @@ export default function VendorRegistration() {
                         setCurrentTab(e.target.value);
                     }}
                 />
-            </Header>
+            </KFHeader>
         </div>
     )
 }

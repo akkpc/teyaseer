@@ -1,6 +1,6 @@
 import { Radio, Space, theme } from 'antd';
 import React, { useReducer, useState } from 'react';
-import TextInput from './TextInput';
+import TextInput from './KFTextInput';
 
 interface FormFields {
     head_office: string;

@@ -59,5 +59,5 @@ function App({ children, path }: Props) {
 };
 
 export {
-    App as Header
+    App as KFHeader
 };

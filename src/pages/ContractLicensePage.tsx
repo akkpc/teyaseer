@@ -1,14 +1,14 @@
 import { Typography } from 'antd';
 import { useState } from 'react';
-import { Header } from '../components/Header';
+import { KFHeader } from '../components/KFHeader';
 import KFButton from '../components/KFButton';
-import TextInput from '../components/TextInput';
+import TextInput from '../components/KFTextInput';
 
 export default function ContractLicensePage() {
     const [cnNumber, setCnNumber] = useState("");
     return (
         <div>
-            <Header >
+            <KFHeader >
                 <div style={{ height: "70vh", display: "flex", alignItems: "center", justifyContent: "center" }} >
                     <div style={{ display: "flex", alignItems: "center", flexDirection: "column", width: 448, rowGap: 32 }} >
                         <div style={{ textAlign: "center" }} >
@@ -30,7 +30,7 @@ export default function ContractLicensePage() {
                         </div>
                     </div>
                 </div >
-            </Header >
+            </KFHeader >
         </div >
     )
 }
