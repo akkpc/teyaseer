@@ -6,7 +6,7 @@ import { headerQueryColor, primaryColor } from '../colors';
 const { Header, Content, Footer } = Layout;
 interface Props {
     children: ReactNode,
-    path: String[]
+    path?: String[]
 }
 
 function App({ children, path }: Props) {

@@ -40,11 +40,12 @@ export function Home<FC>(props: IProps) {
                         <div
                             style={{
                                 flex: 1,
-                                width: "100%",
-                                background: "url('/images/loginpage_image.png')",
-                                backgroundSize: "cover",
-                                backgroundRepeat: "no-repeat",
+                                background: "url('/images/landingpage_image.svg')",
                                 height: "91vh",
+                                width: '100%',
+                                backgroundSize: 'cover',
+                                backgroundRepeat: 'no-repeat',
+                                backgroundPosition: 'center',
                             }}
                         ></div>
                     </Col>
@@ -59,7 +60,7 @@ export function Home<FC>(props: IProps) {
                         }}>
                             <div>
                                 <Typography style={{ fontSize: 36, fontWeight: 600, color: primaryColor }} >Welcome to Teyaseer Vendor Portal</Typography>
-                                <Typography style={{ fontSize: 16, fontWeight: 400, marginTop: 10, color: lightColor }} >To access the vendor portal, please sign in using your UAE Pass or download the relevant requirements based on your role.</Typography>
+                                <Typography style={{ fontSize: 16, fontWeight: 400, marginTop: 10, color: lightColor }} >To access the vendor portal, please sign in using your UAE Pass or download the requirements to become a Teyaseer qualified vendor.</Typography>
                                 <Button
                                     style={{
                                         backgroundColor: "#000000",

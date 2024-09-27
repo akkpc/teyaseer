@@ -7,7 +7,7 @@ interface Props {
     name: string;
     rootStyle?: React.CSSProperties;
 }
-export default function TextInput({ label, placeholder, data, setData, required, name, type = "text", rootStyle, ...rest }: Props & InputProps) {
+export default function TextInput({ label, placeholder, data, setData, required, name, type = "text", rootStyle, style, ...rest }: Props & InputProps) {
     return (
         <div style={{ display: "flex", justifyContent: "flex-start", flexDirection: "column", rowGap: 5, ...rootStyle }} >
             <label style={{ textAlign: "left" }} title='required' >
@@ -19,6 +19,7 @@ export default function TextInput({ label, placeholder, data, setData, required,
                 type={type}
                 value={data}
                 onChange={(e) => setData(e.target.value)} placeholder={placeholder || label}
+                style={{ height: 44, ...style }}
                 {...rest}
             ></Input>
         </div>
