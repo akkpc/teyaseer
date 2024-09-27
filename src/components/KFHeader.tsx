@@ -20,7 +20,7 @@ function App({ children, path }: Props) {
     const {
         token: { colorBgContainer, borderRadiusLG },
     } = theme.useToken();
-    const [language, setLanguage] = useState<"en" | "ar">();
+    const [language, setLanguage] = useState<"en" | "ar" | string>();
     const { t, i18n } = useTranslation();
     const navigate = useNavigate();
 
@@ -69,6 +69,7 @@ function App({ children, path }: Props) {
                 </div>
                 <div>
                     <KFSelect
+                        className="multilingual-dropdown"
                         variant='borderless'
                         value={language}
                         options={languageOptions}
@@ -79,7 +80,8 @@ function App({ children, path }: Props) {
                             backgroundColor: "transparent",
                             border: "1px solid white"
                         }}
-                        onChange={(value) => setLanguage(value)}
+                        onChangeInput={(value) => setLanguage(value)}
+                        label=''
                     />
                 </div>
             </Header>

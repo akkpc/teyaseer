@@ -1,63 +1,34 @@
 import { TabsProps, theme, Typography } from 'antd';
-import React, { useLayoutEffect, useReducer, useState } from 'react';
+import React, { ReactNode, useEffect, useLayoutEffect, useReducer, useState } from 'react';
 import { primaryColor } from '../colors';
-import Classification from '../components/Classification';
-import CompanyInformation from '../components/CompanyInformation';
-import ContactInformation from '../components/ContactInformation';
 import { KFHeader } from '../components/KFHeader';
 import { formHeaderHeight, headerHeight } from '../constants';
 import FormLayout from '../layouts/FormLayout';
+import { metaData } from '../constants/form-metadata';
 
 
-interface FormFields {
-    head_office: string;
-    company_name_english: string;
-    company_name_arabic: string;
-    expiry_date: string;
-    start_date: string;
-    number_of_emplyees: string;
-}
-interface FormActions {
+export interface FormActions {
     type: "add";
     field_name: string;
-    value: string;
+    value: string | string[];
 }
 
-const items: TabsProps['items'] = [
-    {
-        key: '1',
-        label: 'Company Informations',
-        children: <CompanyInformation />,
-    },
-    {
-        key: '2',
-        label: 'Contact Information',
-        children: <ContactInformation />,
-    },
-    {
-        key: '3',
-        label: 'Classification',
-        children: <Classification />,
-    },
-];
+const fields: Record<string, string> = {}
+export const filedsMetaDataState = metaData.map(({ id }) => {
+    fields[id] = "";
+    return ({
+        [id]: ""
+
+    })
+})
 
 export default function VendorRegistration() {
     const [currentTab, setCurrentTab] = useState("1");
-    const [state, dispatch] = useReducer<React.Reducer<FormFields, FormActions>>(reducer, {
-        head_office: "",
-        company_name_english: "",
-        company_name_arabic: "",
-        expiry_date: "",
-        start_date: "",
-        number_of_emplyees: ""
-    });
+    const [state, dispatch] = useReducer<React.Reducer<Record<string, string | string[]>, FormActions>>(reducer, fields);
     const [registeredFab, setRegisteredFAB] = useState("not_registerd");
-    const {
-        token: { colorBgContainer, borderRadiusLG },
-    } = theme.useToken();
-    const [bgContainerHeight,setBgContainerHeight] = useState(0);
+    const [bgContainerHeight, setBgContainerHeight] = useState(0);
 
-    function reducer(state: FormFields, action: FormActions) {
+    function reducer(state: Record<string, string | string[]>, action: FormActions) {
         if (action.type = "add") {
             return {
                 ...state,
@@ -71,11 +42,17 @@ export default function VendorRegistration() {
         (() => {
             const formContainer = document.getElementById("form-container");
             const position = formContainer?.getClientRects()
-            if(position) {
+            if (position) {
                 setBgContainerHeight(position[0].height - 100)
             }
         })()
-    },[])
+    }, [])
+
+    useEffect(() => {
+        if(state) {
+            console.log("State:  ", state)
+        }
+    }, [state])
 
     return (
         <KFHeader>
@@ -107,19 +84,15 @@ export default function VendorRegistration() {
                         flexDirection: "column",
                         rowGap: 20,
                     }} >
-                        <FormLayout style={{ width: "100%" }} title='Vendor Classification' icon='/images/sample_svg.svg' >
+                        <FormLayout
+                            style={{ width: "100%" }}
+                            title='Vendor Classification'
+                            icon='/images/sample_svg.svg'
+                            metaData={metaData}
+                            dispatch={dispatch}
+                            state={state}
+                        >
                             <div>
-                                <Typography>Test</Typography>
-                            </div>
-                        </FormLayout>
-                        <FormLayout style={{ width: "100%" }} title='Vendor Classification' icon='/images/sample_svg.svg' >
-                            <div>
-                                <Typography>Test</Typography>
-                            </div>
-                        </FormLayout>
-                        <FormLayout style={{ width: "100%" }} title='Vendor Classification' icon='/images/sample_svg.svg' >
-                            <div>
-                                <Typography>Test</Typography>
                             </div>
                         </FormLayout>
                     </div>

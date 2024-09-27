@@ -22,8 +22,8 @@ export default function Register() {
                             <TextInput
                                 prefix="CN-"
                                 placeholder='123456'
-                                data={cnNumber}
-                                setData={setCnNumber}
+                                value={cnNumber}
+                                onChangeInput={(value) => setCnNumber(value)}
                                 name=''
                                 label=''
                                 rootStyle={{ width: "100%" }}

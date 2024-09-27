@@ -37,11 +37,15 @@
   }
 }
 
-
-.ant-select-selection-item, .anticon.anticon-down.ant-select-suffix {
+/* .ant-select-selection-item,.antdicon,.anticon-down.ant-select-suffix {
   color: white;
-}
+} */
 
-.ant-select-selection-search-input {
-  color: white;
+.multilingual-dropdown .ant-select-selection-item,
+.multilingual-dropdown .ant-select-arrow,
+.multilingual-dropdown .anticon-down.ant-select-suffix {
+  color: white; /* Change this to your desired color */
 }
+/* .ant-select-selection-search-input {
+  color: white;
+} */
