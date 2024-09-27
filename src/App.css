@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+
+.ant-select-selection-item, .anticon.anticon-down.ant-select-suffix {
+  color: white;
+}
+
+.ant-select-selection-search-input {
+  color: white;
+}

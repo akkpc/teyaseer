@@ -1,6 +1,7 @@
 import { Button, Card, Col, Row } from 'antd'
 import Typography from "antd/es/typography/Typography"
 import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { borderColor, lightColor, primaryColor } from "../colors"
 import { KFHeader } from '../components/KFHeader'
 
@@ -11,7 +12,8 @@ interface IProps { }
 **/
 
 export function Home<FC>(props: IProps) {
-    const [fetching, setFetching] = useState(true)
+    const [fetching, setFetching] = useState(true);
+    const { t } = useTranslation();
 
     useEffect(() => {
         setFetching(true)
@@ -59,8 +61,8 @@ export function Home<FC>(props: IProps) {
                             paddingBottom: 20
                         }}>
                             <div>
-                                <Typography style={{ fontSize: 36, fontWeight: 600, color: primaryColor }} >Welcome to Teyaseer Vendor Portal</Typography>
-                                <Typography style={{ fontSize: 16, fontWeight: 400, marginTop: 10, color: lightColor }} >To access the vendor portal, please sign in using your UAE Pass or download the requirements to become a Teyaseer qualified vendor.</Typography>
+                                <Typography style={{ fontSize: 36, fontWeight: 600, color: primaryColor }} >{t("Welcome to Teyaseer Vendor Portal")}</Typography>
+                                <Typography style={{ fontSize: 16, fontWeight: 400, marginTop: 10, color: lightColor }} >{t("To access the vendor portal, please sign in using your UAE Pass or download the requirements to become a Teyaseer qualified vendor.")}</Typography>
                                 <Button
                                     style={{
                                         backgroundColor: "#000000",
@@ -88,7 +90,7 @@ export function Home<FC>(props: IProps) {
                                         hr.click()
                                     }}
                                 >
-                                    Continue with UAE Pass
+                                    {t("Continue with UAE Pass")}
                                 </Button>
                             </div>
                         </div>
@@ -109,7 +111,7 @@ export function Home<FC>(props: IProps) {
                                             fontWeight: 500,
                                             marginTop: 8
                                         }}
-                                        >Minimum requirements for Consultants</Typography>
+                                        >{t("Minimum requirements for Consultants")}</Typography>
                                         <Button
                                             style={{
                                                 height: 30,
@@ -123,7 +125,7 @@ export function Home<FC>(props: IProps) {
                                             iconPosition={"end"}
                                             onClick={() => downloadPDF("/documents/requireents_consultant.pdf", "consultant")}
                                         >
-                                            Download
+                                            {t("Download")}
                                         </Button>
                                     </Card>
                                 </Col>
@@ -135,7 +137,7 @@ export function Home<FC>(props: IProps) {
                                             fontSize: 16,
                                             fontWeight: 500,
                                             marginTop: 8
-                                        }} >Minimum requirements for Contractors</Typography>
+                                        }} >{t("Minimum requirements for Contractors")}</Typography>
                                         <Button
                                             style={{
                                                 height: 30,
@@ -149,7 +151,7 @@ export function Home<FC>(props: IProps) {
                                             iconPosition={"end"}
                                             onClick={() => downloadPDF("/documents/requireents_contractor.pdf", "contractor")}
                                         >
-                                            Download
+                                            {t("Download")}
                                         </Button>
                                     </Card>
                                 </Col>
