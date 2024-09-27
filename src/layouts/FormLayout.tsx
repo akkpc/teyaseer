@@ -1,8 +1,8 @@
 import { Col, Row, Typography } from 'antd';
 import { ReactNode } from 'react';
 import KFTextInput from '../components/KFTextInput';
-import { FormFieldMetaDataProps } from '../constants/form-metadata';
-import { filedsMetaDataState, FormActions } from '../pages/VendorRegistration';
+import { FormFieldMetaDataProps } from '../metadata/form-metadata';
+import { FormActions } from '../pages/VendorRegistration';
 import { KFDate } from '../components/KFDate';
 import KFMultiSelect from '../components/KFMultiSelect';
 import KFSelect from '../components/KFSelect';
@@ -22,14 +22,14 @@ export default function FormLayout({ style, children, title, icon, metaData, sta
                 display: "flex",
                 alignItems: "center",
                 height: 60,
-                backgroundColor: "#BD9D50",
+                backgroundColor: "#eef3f6",
                 columnGap: 10,
                 padding: 20,
                 borderTopLeftRadius: 12,
                 borderTopRightRadius: 12
             }} >
                 <img src={icon} />
-                <Typography style={{ fontSize: 18, fontWeight: 600, color: "white" }} >{title}</Typography>
+                <Typography style={{ fontSize: 18, fontWeight: 600 }} >{title}</Typography>
             </div>
             <div style={{ padding: 20 }} >
                 <Row gutter={35} style={{ rowGap: 20 }} >
@@ -48,7 +48,6 @@ export default function FormLayout({ style, children, title, icon, metaData, sta
                                                 value
                                             })
                                         }}
-                                        required
                                         options={options}
                                     />
                                 </Col>

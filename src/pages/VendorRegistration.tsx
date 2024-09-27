@@ -4,7 +4,7 @@ import { primaryColor } from '../colors';
 import { KFHeader } from '../components/KFHeader';
 import { formHeaderHeight, headerHeight } from '../constants';
 import FormLayout from '../layouts/FormLayout';
-import { metaData } from '../constants/form-metadata';
+import { formMetaData } from '../metadata/form-metadata';
 
 
 export interface FormActions {
@@ -14,11 +14,10 @@ export interface FormActions {
 }
 
 const fields: Record<string, string> = {}
-export const filedsMetaDataState = metaData.map(({ id }) => {
-    fields[id] = "";
-    return ({
-        [id]: ""
 
+formMetaData.forEach(({ metadata }) => {
+    metadata.forEach(({ id }) => {
+        fields[id] = "";
     })
 })
 
@@ -49,7 +48,7 @@ export default function VendorRegistration() {
     }, [])
 
     useEffect(() => {
-        if(state) {
+        if (state) {
             console.log("State:  ", state)
         }
     }, [state])
@@ -84,17 +83,25 @@ export default function VendorRegistration() {
                         flexDirection: "column",
                         rowGap: 20,
                     }} >
-                        <FormLayout
-                            style={{ width: "100%" }}
-                            title='Vendor Classification'
-                            icon='/images/sample_svg.svg'
-                            metaData={metaData}
-                            dispatch={dispatch}
-                            state={state}
-                        >
-                            <div>
-                            </div>
-                        </FormLayout>
+                        {
+                            formMetaData.map(({ id, label, metadata }) => {
+                                return (
+                                    <FormLayout
+                                        key={id}
+                                        style={{ width: "100%" }}
+                                        title={label}
+                                        icon='/images/sample_svg.svg'
+                                        metaData={metadata}
+                                        dispatch={dispatch}
+                                        state={state}
+                                    >
+                                        <div>
+                                        </div>
+                                    </FormLayout>
+                                )
+                            })
+                        }
+
                     </div>
                 </div>
             </div>
