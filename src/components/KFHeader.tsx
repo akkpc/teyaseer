@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import "../App.css";
 import { headerQueryColor, primaryColor } from '../colors';
-import { LANGUAGE_KEY } from '../constants';
+import { headerHeight, LANGUAGE_KEY } from '../constants';
 import { getItemLocal, setItemLocal } from '../helpers';
 import KFSelect from './KFSelect';
 
@@ -44,7 +44,7 @@ function App({ children, path }: Props) {
 
     return (
         <Layout>
-            <Header style={{ display: 'flex', alignItems: 'center', height: 92, backgroundColor: primaryColor, justifyContent: "space-between" }}>
+            <Header style={{ display: 'flex', alignItems: 'center', height: headerHeight, backgroundColor: primaryColor, justifyContent: "space-between" }}>
                 <div style={{ display: 'flex', alignItems: 'center', cursor:"pointer" }} onClick={() => {
                     navigate("/");
                 }} >
