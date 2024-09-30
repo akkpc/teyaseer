@@ -8,6 +8,10 @@ export interface FormFieldMetaDataProps {
     options?: {
         value: string,
         label: string
+    }[],
+    rules?: {
+        required: boolean;
+        message: string;
     }[]
 }
 

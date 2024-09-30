@@ -1,5 +1,5 @@
-import { TabsProps, theme, Typography } from 'antd';
-import React, { ReactNode, useEffect, useLayoutEffect, useReducer, useState } from 'react';
+import { Form, Typography } from 'antd';
+import React, { useEffect, useLayoutEffect, useReducer, useState } from 'react';
 import { primaryColor } from '../colors';
 import { KFHeader } from '../components/KFHeader';
 import { formHeaderHeight, headerHeight } from '../constants';
@@ -83,25 +83,28 @@ export default function VendorRegistration() {
                         flexDirection: "column",
                         rowGap: 20,
                     }} >
-                        {
-                            formMetaData.map(({ id, label, metadata }) => {
-                                return (
-                                    <FormLayout
-                                        key={id}
-                                        style={{ width: "100%" }}
-                                        title={label}
-                                        icon='/images/sample_svg.svg'
-                                        metaData={metadata}
-                                        dispatch={dispatch}
-                                        state={state}
-                                    >
-                                        <div>
-                                        </div>
-                                    </FormLayout>
-                                )
-                            })
-                        }
-
+                        <Form layout='vertical' >
+                            {
+                                formMetaData.map(({ id, label, metadata }) => {
+                                    return (
+                                        <FormLayout
+                                            key={id}
+                                            style={{ width: "100%" }}
+                                            title={label}
+                                            icon='/images/sample_svg.svg'
+                                            metaData={metadata}
+                                            dispatch={dispatch}
+                                            state={state}
+                                        // required={true}
+                                        >
+                                            <div>
+                                            </div>
+                                        </FormLayout>
+                                    )
+                                })
+                            }
+                            <button type="submit" >Submit</button>
+                        </Form>
                     </div>
                 </div>
             </div>

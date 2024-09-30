@@ -1,12 +1,11 @@
-import { Col, Row, Typography } from 'antd';
+import { Col, Form, Row, Typography } from 'antd';
 import { ReactNode } from 'react';
-import KFTextInput from '../components/KFTextInput';
-import { FormFieldMetaDataProps } from '../metadata/form-metadata';
-import { FormActions } from '../pages/VendorRegistration';
 import { KFDate } from '../components/KFDate';
 import KFMultiSelect from '../components/KFMultiSelect';
 import KFSelect from '../components/KFSelect';
-import dayjs from 'dayjs';
+import KFTextInput from '../components/KFTextInput';
+import { FormFieldMetaDataProps } from '../metadata/form-metadata';
+import { FormActions } from '../pages/VendorRegistration';
 interface Props {
     title: string;
     icon: string;
@@ -34,22 +33,29 @@ export default function FormLayout({ style, children, title, icon, metaData, sta
             <div style={{ padding: 20 }} >
                 <Row gutter={35} style={{ rowGap: 20 }} >
                     {
-                        metaData.map(({ id, label, type, options }, index) => {
+                        metaData.map(({ id, label, type, options, rules }, index) => {
                             const Component: any = getComponent(type);
                             return (
                                 <Col key={index} className="gutter-row" span={8}>
-                                    <Component
-                                        value={state[id]}
+                                    <Form.Item
                                         label={label}
-                                        onChangeInput={(value: any) => {
-                                            dispatch({
-                                                type: "add",
-                                                field_name: id,
-                                                value
-                                            })
-                                        }}
-                                        options={options}
-                                    />
+                                        name={id}
+                                        rules={rules}
+                                    >
+                                        <Component
+                                            value={state[id]}
+                                            label={label}
+                                            onChangeInput={(value: any) => {
+                                                dispatch({
+                                                    type: "add",
+                                                    field_name: id,
+                                                    value
+                                                })
+                                            }}
+                                            options={options}
+                                            allowClear={true}
+                                        />
+                                    </Form.Item>
                                 </Col>
                             )
                         })
