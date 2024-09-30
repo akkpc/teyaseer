@@ -61,35 +61,55 @@ const categorizationMeta: FormFieldMetaDataProps[] = [
         label: "Do you carry out precast work (ready-mix concrete)?",
         type: "select",
         options: yes_or_no_action,
-        rules: defaultRule
+        rules: defaultRule,
+        visibleRule: (_,vendorType) => {
+            if(vendorType == "contractor") return true;
+            return false;
+        }
     },
     {
         id: "do_you_do_cold",
         label: "Do you do cold steel construction (galvanised)?",
         type: "select",
         options: yes_or_no_action,
-        rules: defaultRule
+        rules: defaultRule,
+        visibleRule: (_,vendorType) => {
+            if(vendorType == "contractor") return true;
+            return false;
+        }
     },
     {
         id: "do_you_carry_out_expansion",
         label: "Do you carry out expansion and maintenance works?",
         type: "select",
         options: yes_or_no_action,
-        rules: defaultRule
+        rules: defaultRule,
+        visibleRule: (_,vendorType) => {
+            if(vendorType == "contractor") return true;
+            return false;
+        }
     },
     {
         id: "have_you_built",
         label: "Have you built non-housing projects",
         type: "select",
         options: yes_or_no_action,
-        rules: defaultRule
+        rules: defaultRule,
+        visibleRule: (_,vendorType) => {
+            if(vendorType == "contractor") return true;
+            return false;
+        }
     },
     {
         id: "are_you_interested",
         label: "Are you interested in unfinished projects? ",
         type: "select",
         options: yes_or_no_action,
-        rules: defaultRule
+        rules: defaultRule,
+        visibleRule: (_,vendorType) => {
+            if(vendorType == "contractor") return true;
+            return false;
+        }
     },
     {
         id: "value_of_desired_projects",
@@ -151,7 +171,11 @@ const categorizationMeta: FormFieldMetaDataProps[] = [
         label: "Are you using a subcontractor to complete the project?",
         type: "select",
         options: yes_or_no_action,
-        rules: defaultRule
+        rules: defaultRule,
+        visibleRule: (_,vendorType) => {
+            if(vendorType == "contractor") return true;
+            return false;
+        }
     },
     {
         id: "for_which_works",
@@ -172,8 +196,8 @@ const categorizationMeta: FormFieldMetaDataProps[] = [
             { label: "Other", value: "other" }
         ],
         rules: defaultRule,
-        visibleRule: (state) => {
-            if(state["are_you_using_sub_contractor"] == "yes") return true;
+        visibleRule: (state, vendorType) => {
+            if(state["are_you_using_sub_contractor"] == "yes" && vendorType == "contractor") return true;
             return false;
         }
     },
@@ -223,6 +247,65 @@ const categorizationMeta: FormFieldMetaDataProps[] = [
         type: "select",
         options: regionOptions,
         rules: defaultRule
+    },
+    {
+        id: "do_you_design_supervice_projects",
+        label: "Do you design and supervise projects",
+        type: "select",
+        options: [
+            { label: "Maintenance and expansion loan", value: "maintenance_expansion_loan" },
+            { label: "Demolition and reconstruction loan", value: "demolition_reconstruction_loan" },
+            { label: "New construction loan", value: "new_construction_loan" },
+            { label: "Completion projects", value: "completion_projects" }
+        ],
+        rules: defaultRule,
+        visibleRule: (_, vendorType) => {
+            if(vendorType == "consultant") return true;
+            return false;
+        }
+    },
+    {
+        id: "what_are_the_services_you_carry",
+        label: "What are the services you carry out inside the office?",
+        type: "select",
+        options: [
+            { label: "Swimming pool design", value: "swimming_pool_design" },
+            { label: "Garden design", value: "garden_design" },
+            { label: "Interior design", value: "interior_design" },
+            { label: "Lighting design", value: "lighting_design" },
+            { label: "Three-dimensional images", value: "three_dimensional_images" }
+        ],        
+        rules: defaultRule,
+        visibleRule: (_, vendorType) => {
+            if(vendorType == "consultant") return true;
+            return false;
+        }
+    },
+    {
+        id: "special_offers_for_teyaseer_customers",
+        label: "Special offers for Teyaseer customers",
+        type: "select",
+        options: [
+            { label: "Free Landscape Design", value: "free_landscape_design" },
+            { label: "Free Interior Design", value: "free_interior_design" },
+            { label: "Free Soil Inspection", value: "free_soil_inspection" },
+            { label: "Free Lighting Design", value: "free_lighting_design" },
+            { label: "Other", value: "other" }
+        ],            
+        visibleRule: (_, vendorType) => {
+            if(vendorType == "consultant") return true;
+            return false;
+        }
+    },
+    {
+        id: "please_elaborate_on_the_offer",
+        label: "Please elaborate on the offer",
+        type: "text",          
+        rules: defaultRule,
+        visibleRule: (state, vendorType) => {
+            if(state["special_offers_for_teyaseer_customers"] == "other" && vendorType == "consultant") return true;
+            return false;
+        }
     }
 ]
 

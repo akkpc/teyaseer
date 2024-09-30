@@ -1,4 +1,4 @@
-import { Form, Typography } from 'antd';
+import { Button, Form, Typography } from 'antd';
 import React, { useEffect, useLayoutEffect, useReducer, useState } from 'react';
 import { primaryColor } from '../colors';
 import { KFHeader } from '../components/KFHeader';
@@ -22,7 +22,7 @@ formMetaData.forEach(({ metadata }) => {
 })
 
 export default function VendorRegistration() {
-    const [vendorType, setVendorType] = useState<"consultant" | "contractor">("consultant");
+    const [vendorType, setVendorType] = useState<"consultant" | "contractor">("contractor");
     const [state, dispatch] = useReducer<React.Reducer<Record<string, string | string[]>, FormActions>>(reducer, fields);
     const [registeredFab, setRegisteredFAB] = useState("not_registerd");
     const [bgContainerHeight, setBgContainerHeight] = useState(0);
@@ -83,8 +83,8 @@ export default function VendorRegistration() {
                         flexDirection: "column",
                         rowGap: 20,
                     }} >
-                        <Form onFinish={(e) => {
-                            console.log("Event value : " , e)
+                        <Form id='vendor-registration-form' onFinish={(e) => {
+                            console.log("Event value : ", e)
                         }} layout='vertical' >
                             {
                                 formMetaData.map(({ id, label, metadata }) => {
@@ -105,8 +105,14 @@ export default function VendorRegistration() {
                                     )
                                 })
                             }
-                            <button type="submit" >Submit</button>
                         </Form>
+                        <div style={{ display: "flex", justifyContent: "flex-end" }} >
+                            <Form.Item>
+                                <Button form='vendor-registration-form' style={{ display: "flex", marginTop: 15, textAlign: "right" }} htmlType='submit' type='primary'>
+                                    Submit
+                                </Button>
+                            </Form.Item>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -1,3 +1,4 @@
+import { attachmentMeta } from "./attachmentMeta";
 import { authorizedSignatory } from "./authorizedSignatory";
 import { categorizationMeta } from "./categorizationMeta";
 import { contactDetails } from "./contactDetails";
@@ -69,4 +70,9 @@ export const formMetaData: FormProps[] = [
         label: "Categorization",
         metadata: categorizationMeta
     },
+    {
+        id: 9,
+        label: "Attachment",
+        metadata: attachmentMeta
+    }
 ]
