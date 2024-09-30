@@ -49,3 +49,12 @@
 /* .ant-select-selection-search-input {
   color: white;
 } */
+
+.ant-col.ant-form-item-label {
+  /* white-space: nowrap !important;
+  overflow: hidden;
+  text-overflow: ellipsis; */
+  display: flex;
+  height: 50px;
+  align-items: flex-end;
+}

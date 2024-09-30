@@ -30,7 +30,7 @@ export function KFDate({ onChangeInput, label, value, required, name, rootStyle,
                 picker="date"
                 format={dateFormat}
                 {...rest}
-                value={dayjs(value ? value : new Date().toLocaleString(), dateFormat)}
+                value={value ? dayjs(value, dateFormat) : null}
             />
         </div>
     )

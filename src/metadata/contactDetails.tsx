@@ -4,15 +4,7 @@ const contactDetails: FormFieldMetaDataProps[] = [
     {
         id: "name",
         label: "Name",
-        type: "select",
-        options: [{
-            label: "First",
-            value: "First"
-        }],
-        rules: [{
-            required: true,
-            message: "Name is required"
-        }]
+        type: "text",
     },
     {
         id: "mobile",

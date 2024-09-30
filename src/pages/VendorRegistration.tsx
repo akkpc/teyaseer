@@ -89,7 +89,7 @@ export default function VendorRegistration() {
                                     return (
                                         <FormLayout
                                             key={id}
-                                            style={{ width: "100%" }}
+                                            style={{ width: "100%", marginTop: 15 }}
                                             title={label}
                                             icon='/images/sample_svg.svg'
                                             metaData={metadata}
