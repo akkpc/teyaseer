@@ -50,7 +50,11 @@ const categorizationMeta: FormFieldMetaDataProps[] = [
         label: "Upload side contract",
         type: "attachment",
         options: yes_or_no_action,
-        rules: defaultRule
+        rules: defaultRule,
+        visibleRule: (state) => {
+            if(state["do_you_sign_side_contracts"] == "yes") return true;
+            return false;
+        }
     },
     {
         id: "do_you_carry_out",
@@ -119,31 +123,31 @@ const categorizationMeta: FormFieldMetaDataProps[] = [
         label: "Select preferred internal region(s) of Abu Dhabi",
         type: "text",
         rules: defaultRule,
-        visibleRule: {
-            fieldName: "which_regions",
-            value: "abu_dhabi"
+        visibleRule: (state) => {
+            if(state["which_regions"] == "abu_dhabi") return true;
+            return false;
         }
     },
     {
         id: "select_preferred_internal_al_ain",
         label: "Select preferred internal region(s) of Al Ain",
         type: "text",
-        visibleRule: {
-            fieldName: "which_regions",
-            value: "al_ain"
+        visibleRule: (state) => {
+            if(state["which_regions"] == "al_ain") return true;
+            return false;
         }
     },
     {
         id: "select_preferred_internal_dhafara",
         label: "Select preferred internal region(s) of Al Dhafra",
         type: "text",
-        visibleRule: {
-            fieldName: "which_regions",
-            value: "al_dhafra"
+        visibleRule: (state) => {
+            if(state["which_regions"] == "al_dhafra") return true;
+            return false;
         }
     },
     {
-        id: "are_you_using",
+        id: "are_you_using_sub_contractor",
         label: "Are you using a subcontractor to complete the project?",
         type: "select",
         options: yes_or_no_action,
@@ -167,7 +171,11 @@ const categorizationMeta: FormFieldMetaDataProps[] = [
             { label: "Demolition", value: "demolition" },
             { label: "Other", value: "other" }
         ],
-        rules: defaultRule
+        rules: defaultRule,
+        visibleRule: (state) => {
+            if(state["are_you_using_sub_contractor"] == "yes") return true;
+            return false;
+        }
     },
     {
         id: "have_you_executed",
@@ -203,7 +211,11 @@ const categorizationMeta: FormFieldMetaDataProps[] = [
             { label: "M11", value: "m11" },
             { label: "M12", value: "m12" }
         ],
-        rules: defaultRule
+        rules: defaultRule,
+        visibleRule: (state) => {
+            if(state["have_you_executed"] == "yes") return true;
+            return false;
+        }
     },
     {
         id: "in_chich_regions",

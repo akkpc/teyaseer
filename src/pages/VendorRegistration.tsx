@@ -22,7 +22,7 @@ formMetaData.forEach(({ metadata }) => {
 })
 
 export default function VendorRegistration() {
-    const [currentTab, setCurrentTab] = useState("1");
+    const [vendorType, setVendorType] = useState<"consultant" | "contractor">("consultant");
     const [state, dispatch] = useReducer<React.Reducer<Record<string, string | string[]>, FormActions>>(reducer, fields);
     const [registeredFab, setRegisteredFAB] = useState("not_registerd");
     const [bgContainerHeight, setBgContainerHeight] = useState(0);
@@ -97,6 +97,7 @@ export default function VendorRegistration() {
                                             metaData={metadata}
                                             dispatch={dispatch}
                                             state={state}
+                                            vendorType={vendorType}
                                         >
                                             <div>
                                             </div>

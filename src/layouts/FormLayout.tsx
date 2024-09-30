@@ -11,11 +11,12 @@ interface Props {
     title: string;
     icon: string;
     metaData: FormFieldMetaDataProps[];
-    state: Record<string, string | string[]>,
-    dispatch: React.Dispatch<FormActions>
+    state: Record<string, string | string[]>;
+    dispatch: React.Dispatch<FormActions>;
+    vendorType: "consultant" | "contractor";
     children?: ReactNode;
 }
-export default function FormLayout({ style, title, icon, metaData, state, dispatch }: Props & React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>) {
+export default function FormLayout({ style, title, icon, metaData, state, dispatch, vendorType }: Props & React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>) {
     return (
         <div style={{ border: "1px solid #E4E7EC", borderRadius: 12, ...style }} >
             <div style={{
@@ -36,7 +37,7 @@ export default function FormLayout({ style, title, icon, metaData, state, dispat
                     {
                         metaData.map(({ id, label, type, options, rules, visibleRule }) => {
                             const Component: any = getComponent(type);
-                            const visible = visibleRule ? (state[visibleRule.fieldName] == visibleRule.value) : true;
+                            const visible = visibleRule ? visibleRule(state, vendorType) : true;
                             return (
                                 visible &&
                                 <Col key={id} className="gutter-row" span={8}>

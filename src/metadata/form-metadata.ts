@@ -19,10 +19,7 @@ export interface FormFieldMetaDataProps {
         required: boolean;
         message: string;
     }[],
-    visibleRule?: {
-        fieldName: string;
-        value: string;
-    }
+    visibleRule?: (state: Record<string,string | string[]>, vendorType: string) => boolean;
 }
 
 interface FormProps {
