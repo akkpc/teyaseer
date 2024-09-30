@@ -1,5 +1,6 @@
 import { Col, Form, Row, Typography } from 'antd';
 import { ReactNode } from 'react';
+import KFAttachment from '../components/KFAttachment';
 import { KFDate } from '../components/KFDate';
 import KFMultiSelect from '../components/KFMultiSelect';
 import KFSelect from '../components/KFSelect';
@@ -14,7 +15,7 @@ interface Props {
     dispatch: React.Dispatch<FormActions>
     children?: ReactNode;
 }
-export default function FormLayout({ style, children, title, icon, metaData, state, dispatch }: Props & React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>) {
+export default function FormLayout({ style, title, icon, metaData, state, dispatch }: Props & React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>) {
     return (
         <div style={{ border: "1px solid #E4E7EC", borderRadius: 12, ...style }} >
             <div style={{
@@ -33,10 +34,12 @@ export default function FormLayout({ style, children, title, icon, metaData, sta
             <div style={{ padding: 20 }} >
                 <Row gutter={35} style={{ rowGap: 20 }} >
                     {
-                        metaData.map(({ id, label, type, options, rules }, index) => {
+                        metaData.map(({ id, label, type, options, rules, visibleRule }) => {
                             const Component: any = getComponent(type);
+                            const visible = visibleRule ? (state[visibleRule.fieldName] == visibleRule.value) : true;
                             return (
-                                <Col key={index} className="gutter-row" span={8}>
+                                visible &&
+                                <Col key={id} className="gutter-row" span={8}>
                                     <Form.Item
                                         label={label}
                                         name={id}
@@ -66,7 +69,7 @@ export default function FormLayout({ style, children, title, icon, metaData, sta
     )
 }
 
-function getComponent(type: "text" | "date" | "select" | "multiselect") {
+function getComponent(type: "text" | "date" | "select" | "multiselect" | "attachment") {
     switch (type) {
         case "text":
             return KFTextInput;
@@ -76,6 +79,8 @@ function getComponent(type: "text" | "date" | "select" | "multiselect") {
             return KFMultiSelect;
         case "select":
             return KFSelect;
+        case "attachment":
+            return KFAttachment
         default:
             return KFTextInput;
     }

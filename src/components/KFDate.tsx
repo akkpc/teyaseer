@@ -1,5 +1,4 @@
 import { DatePicker } from 'antd';
-import { DatePickerType } from 'antd/es/date-picker';
 import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 
@@ -15,7 +14,7 @@ interface Props {
     onChangeInput: (date: string | string[]) => void;
 }
 const dateFormat = 'DD/MM/YYYY';
-export function KFDate({ onChangeInput, label, value, required, name, rootStyle, style, ...rest }: Props & DatePickerType) {
+export function KFDate({ onChangeInput, label, value, required, name, rootStyle, style, onChange, ...rest }: any) {
     return (
         <div style={{ display: "flex", justifyContent: "flex-start", flexDirection: "column", rowGap: 5, ...rootStyle }} >
             {/* <label style={{ textAlign: "left" }} title='required' >
@@ -25,6 +24,9 @@ export function KFDate({ onChangeInput, label, value, required, name, rootStyle,
             <DatePicker
                 onChange={(_, dateString) => {
                     onChangeInput(dateString)
+                    if (onChange) {
+                        onChange(_, dateString);
+                    }
                 }}
                 style={{ height: 44 }}
                 picker="date"

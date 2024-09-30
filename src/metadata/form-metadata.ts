@@ -10,7 +10,7 @@ import { villaProjects } from "./villaProjects";
 export interface FormFieldMetaDataProps {
     id: string,
     label: string;
-    type: "text" | "date" | "select" | "multiselect",
+    type: "text" | "date" | "select" | "multiselect" | "attachment",
     options?: {
         value: string,
         label: string
@@ -18,7 +18,11 @@ export interface FormFieldMetaDataProps {
     rules?: {
         required: boolean;
         message: string;
-    }[]
+    }[],
+    visibleRule?: {
+        fieldName: string;
+        value: string;
+    }
 }
 
 interface FormProps {

@@ -83,7 +83,9 @@ export default function VendorRegistration() {
                         flexDirection: "column",
                         rowGap: 20,
                     }} >
-                        <Form layout='vertical' >
+                        <Form onFinish={(e) => {
+                            console.log("Event value : " , e)
+                        }} layout='vertical' >
                             {
                                 formMetaData.map(({ id, label, metadata }) => {
                                     return (
@@ -95,7 +97,6 @@ export default function VendorRegistration() {
                                             metaData={metadata}
                                             dispatch={dispatch}
                                             state={state}
-                                        // required={true}
                                         >
                                             <div>
                                             </div>

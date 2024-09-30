@@ -11,7 +11,7 @@ interface Props {
   }[]
 }
 
-export default function KFMultiSelect({ label, placeholder, onChangeInput, rootStyle, style, required, options, ...rest }: Props & SelectProps) {
+export default function KFMultiSelect({ label, placeholder, onChangeInput, rootStyle, style, required, options, value, ...rest }: Props & SelectProps) {
   return (
     <div style={{ display: "flex", justifyContent: "flex-start", flexDirection: "column", rowGap: 5, ...rootStyle }} >
       {/* <label style={{ textAlign: "left" }} title='required' >
@@ -22,9 +22,9 @@ export default function KFMultiSelect({ label, placeholder, onChangeInput, rootS
         mode="multiple"
         style={{ width: '100%', height: 44, color: "black" }}
         placeholder={placeholder}
-        defaultValue={[]}
-        onChange={(value) => onChangeInput(value)}
         options={options}
+        onChange={(v) => onChangeInput(v)}
+        {...rest}
       />
     </div>
   )
