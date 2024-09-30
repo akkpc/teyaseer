@@ -242,13 +242,6 @@ const categorizationMeta: FormFieldMetaDataProps[] = [
         }
     },
     {
-        id: "in_chich_regions",
-        label: "In which regions are your offices located?",
-        type: "select",
-        options: regionOptions,
-        rules: defaultRule
-    },
-    {
         id: "do_you_design_supervice_projects",
         label: "Do you design and supervise projects",
         type: "select",
@@ -306,7 +299,14 @@ const categorizationMeta: FormFieldMetaDataProps[] = [
             if(state["special_offers_for_teyaseer_customers"] == "other" && vendorType == "consultant") return true;
             return false;
         }
-    }
+    },
+    {
+        id: "in_which_regions",
+        label: "In which regions are your offices located?",
+        type: "select",
+        options: regionOptions,
+        rules: defaultRule
+    },
 ]
 
 export {
