@@ -7,6 +7,7 @@ import KFSelect from '../components/KFSelect';
 import KFTextInput from '../components/KFTextInput';
 import { FormFieldMetaDataProps } from '../metadata/form-metadata';
 import { FormActions } from '../pages/VendorRegistration';
+import { useTranslation } from 'react-i18next';
 interface Props {
     title: string;
     icon: string;
@@ -17,6 +18,7 @@ interface Props {
     children?: ReactNode;
 }
 export default function FormLayout({ style, title, icon, metaData, state, dispatch, vendorType }: Props & React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>) {
+    const { t } = useTranslation();
     return (
         <div style={{ border: "1px solid #E4E7EC", borderRadius: 12, ...style }} >
             <div style={{
@@ -30,7 +32,7 @@ export default function FormLayout({ style, title, icon, metaData, state, dispat
                 borderTopRightRadius: 12
             }} >
                 <img src={icon} />
-                <Typography style={{ fontSize: 18, fontWeight: 600 }} >{title}</Typography>
+                <Typography style={{ fontSize: 18, fontWeight: 600 }} >{t(title)}</Typography>
             </div>
             <div style={{ padding: 20 }} >
                 <Row gutter={35} style={{ rowGap: 20 }} >
@@ -42,13 +44,13 @@ export default function FormLayout({ style, title, icon, metaData, state, dispat
                                 visible &&
                                 <Col key={id} className="gutter-row" span={8}>
                                     <Form.Item
-                                        label={label}
+                                        label={t(label)}
                                         name={id}
                                         rules={rules}
                                     >
                                         <Component
                                             value={state[id]}
-                                            label={label}
+                                            label={t(label)}
                                             onChangeInput={(value: any) => {
                                                 dispatch({
                                                     type: "add",

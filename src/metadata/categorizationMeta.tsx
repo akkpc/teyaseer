@@ -40,7 +40,7 @@ const defaultRule = [
 const categorizationMeta: FormFieldMetaDataProps[] = [
     {
         id: "do_you_sign_side_contracts",
-        label: "Do you sign side contracts for owners in addition to the FAB approved contracts?",
+        label: "Do you sign side contracts with customers?",
         type: "select",
         options: yes_or_no_action,
         rules: defaultRule
@@ -102,7 +102,7 @@ const categorizationMeta: FormFieldMetaDataProps[] = [
     },
     {
         id: "are_you_interested",
-        label: "Are you interested in unfinished projects? ",
+        label: "Are you interested in unfinished projects?",
         type: "select",
         options: yes_or_no_action,
         rules: defaultRule,

@@ -1,6 +1,7 @@
 import { DatePicker } from 'antd';
 import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
+import { useTranslation } from 'react-i18next';
 
 dayjs.extend(customParseFormat);
 
@@ -15,6 +16,7 @@ interface Props {
 }
 const dateFormat = 'DD/MM/YYYY';
 export function KFDate({ onChangeInput, label, value, required, name, rootStyle, style, onChange, ...rest }: any) {
+    const {t} = useTranslation();
     return (
         <div style={{ display: "flex", justifyContent: "flex-start", flexDirection: "column", rowGap: 5, ...rootStyle }} >
             {/* <label style={{ textAlign: "left" }} title='required' >
@@ -31,6 +33,7 @@ export function KFDate({ onChangeInput, label, value, required, name, rootStyle,
                 style={{ height: 44 }}
                 picker="date"
                 format={dateFormat}
+                placeholder={t("Select date")}
                 {...rest}
                 value={value ? dayjs(value, dateFormat) : null}
             />

@@ -5,6 +5,8 @@ import { KFHeader } from '../components/KFHeader';
 import { formHeaderHeight, headerHeight } from '../constants';
 import FormLayout from '../layouts/FormLayout';
 import { formMetaData } from '../metadata/form-metadata';
+import KFButton from '../components/KFButton';
+import { useTranslation } from 'react-i18next';
 
 
 export interface FormActions {
@@ -26,6 +28,7 @@ export default function VendorRegistration() {
     const [state, dispatch] = useReducer<React.Reducer<Record<string, string | string[]>, FormActions>>(reducer, fields);
     const [registeredFab, setRegisteredFAB] = useState("not_registerd");
     const [bgContainerHeight, setBgContainerHeight] = useState(0);
+    const {t} = useTranslation();
 
     function reducer(state: Record<string, string | string[]>, action: FormActions) {
         if (action.type = "add") {
@@ -44,6 +47,14 @@ export default function VendorRegistration() {
             if (position) {
                 setBgContainerHeight(position[0].height - 100)
             }
+
+            window.addEventListener("resize", () => {
+                const formContainer = document.getElementById("form-container");
+                const position = formContainer?.getClientRects()
+                if (position) {
+                    setBgContainerHeight(position[0].height - 100)
+                }
+            })
         })()
     }, [])
 
@@ -108,9 +119,20 @@ export default function VendorRegistration() {
                         </Form>
                         <div style={{ display: "flex", justifyContent: "flex-end" }} >
                             <Form.Item>
-                                <Button form='vendor-registration-form' style={{ display: "flex", marginTop: 15, textAlign: "right" }} htmlType='submit' type='primary'>
-                                    Submit
-                                </Button>
+                                <KFButton
+                                    form='vendor-registration-form'
+                                    style={{
+                                        display: "flex",
+                                        marginTop: 15,
+                                        textAlign: "right",
+                                        backgroundColor: "#181D36",
+                                        width: 139
+                                    }}
+                                    htmlType='submit'
+                                    type='primary'
+                                >
+                                    {t("Submit")}
+                                </KFButton>
                             </Form.Item>
                         </div>
                     </div>

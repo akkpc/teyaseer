@@ -14,7 +14,7 @@ interface Props {
     path?: String[]
 }
 
-const languageOptions = [{ value: "en", label: "English" }, { value: "ar", label: "Arabic" }]
+const languageOptions = [{ value: "en", label: "English" }, { value: "ar", label: "عربي" }]
 
 function App({ children, path }: Props) {
     const {

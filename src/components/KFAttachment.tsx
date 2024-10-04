@@ -1,6 +1,7 @@
 import { UploadOutlined } from '@ant-design/icons';
 import type { UploadProps } from 'antd';
 import { Button, Upload } from 'antd';
+import { useTranslation } from 'react-i18next';
 
 const props: UploadProps = {
     name: 'file',
@@ -20,15 +21,12 @@ const props: UploadProps = {
     },
 };
 
-function KFAttachment({}: any) {
+function KFAttachment({ }: any) {
+    const { t } = useTranslation();
     return (
         <div style={{ display: "flex", justifyContent: "flex-start", flexDirection: "column", rowGap: 5 }} >
-            {/* <label style={{ textAlign: "left" }} title='required' >
-                {required && <abbr style={{ color: "rgb(234, 0, 30)" }}>*</abbr>}
-                {label}
-            </label> */}
             <Upload {...props}>
-                <Button style={{height: 44}}  icon={<UploadOutlined />}>Click to Upload</Button>
+                <Button style={{ height: 44 }} icon={<UploadOutlined />}>{t("Click to Upload")}</Button>
             </Upload>
         </div>
     )
